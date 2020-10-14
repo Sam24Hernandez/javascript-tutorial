@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introducción a Javascript</title>
+    <meta
+      name="description"
+      content="Desarrollo Web con HTML, CSS, Javascript"
+    />
+    <!-- Así agregas los estilos CSS a tu documento HTML -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Jugador 1: Sam</h1>
+
+    <!--
+      Controladores de Javascript en línea:
+      La funcion onclick en el button ejecuta la sentencia;
+      Sin embargo, no hagas esto, es una mala práctica contaminar
+      tu HTML con Javascript, es ineficiente, tendrías que incluir el
+      atributo onclick="crearParrafo()" en cada boton que desees aplicar Javascript.      
+    -->
+    <br />
+    <button>¡Click aquí!</button>
+
+    <!-- JavaScript de forma Interna(Aunque no lo recomiendo mucho) 
+
+      <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        function createParagraph() {
+          let para = document.createElement("p");
+          para.textContent = "You clicked the button!";
+          document.body.appendChild(para);
+        }
+
+        const buttons = document.querySelectorAll("button");
+
+        for (let i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener("click", createParagraph);
+        }
+      });
+    </script>
+    
+    -->
+
+    <!-- 
+      Así agregas los scripts Javascript a tu documento HTML:
+      Javascript Externo:
+    -->
+    <script src="main.js"></script>
+  </body>
+</html>
