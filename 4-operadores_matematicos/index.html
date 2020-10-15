@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript - Operadores matemáticos</title>
+  </head>
+  <body>
+    <h1>Operadores Matemáticos</h1>
+
+    <button>Iniciar prueba</button>
+    <p>La prueba se detuvo.</p>
+
+    <!-- Operadores Ejemplo -->
+    <script>
+      var btn = document.querySelector("button");
+      var txt = document.querySelector("p");
+
+      btn.addEventListener("click", actualizaBtn);
+
+      function actualizaBtn() {
+        if (btn.textContent === "Iniciar prueba") {
+          btn.textContent = "Detener prueba";
+          txt.textContent = "La prueba se inició!";
+        } else {
+          btn.textContent = "Iniciar prueba";
+          txt.textContent = "La prueba se detuvo.";
+        }
+      }
+    </script>
+
+    <!-- Operadores -->
+    <script src="main.js"></script>
+  </body>
+</html>

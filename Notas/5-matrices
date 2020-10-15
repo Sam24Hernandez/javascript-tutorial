@@ -1,0 +1,11 @@
+/************ ¿Qué es una matriz? ***********/
+
+Las matrices se describen como "objetos tipo lista"; básicamente son objetos individuales que contienen múltiples valores almacenados en una lista. 
+Los objetos de matriz pueden almacenarse en variables y tratarse de la misma manera que cualquier otro tipo de valor, 
+la diferencia es que podemos acceder individualmente a cada valor dentro de la lista y hacer cosas útiles y eficientes con la lista, 
+como recorrerlo con un bucle y hacer una misma cosa a cada valor. Tal vez tenemos una serie de productos y sus precios almacenados en una matriz, y 
+queremos recorrerlos e imprimirlos en una factura, sumando todos los precios e imprimiendo el total en la parte inferior.
+
+Si no tuvieramos matrices, tendríamos que almacenar cada elemento en una variable separada, luego llamar al código que hace la impresión y agregarlo por separado para cada artículo. 
+Esto sería mucho más largo de escribir, menos eficiente y más propenso a errores. si tuviéramos 10 elementos para agregar a la factura, ya sería suficientemente malo, pero ¿ qué pasa con 100 o 1000 artículos? 
+Volveremos a este ejemplo más adelante en el artículo.

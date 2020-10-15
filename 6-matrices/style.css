@@ -1,0 +1,29 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 90%;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  font-size: 2.5em;
+}
+
+.output {
+  color: #333;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.output p {
+  background-color: #56ccf2;
+  font-size: 1.2em;
+}

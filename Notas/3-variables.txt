@@ -1,0 +1,77 @@
+/************************* Almacenando información - Variables *************************/
+
+Variable
+Es un contenedor para un valor, almacena información, que podriamos utilizar después.
+
+Nota: Decimos que las variables contienen valores. Ésta es una importante distinción que
+debemos reconocer. Las variables no son los valores en sí mismos; son contenedores de valores.
+Puedes pasar en ellas como pequeñas cajas de cartón en las que puedes guardar cosas.
+
+/* Diferencia entre var y let */
+
+Las razones son algo históricas. Cuando se creó JavaScript por primera vez, solo existía var. Esto básicamente funciona bien en la mayoría de los casos, 
+pero tiene algunos problemas en la forma en que trabaja — su diseño a veces puede ser confuso o francamente molesto. Entonces, 
+se creó let en versiones modernas de JavaScript, una nueva palabra clave para crear variables que funciona de manera algo diferente a var, 
+solucionando sus problemas en el proceso.
+
+/* Un consejo sobre las reglas de nomenclatura de variables */
+
+Puedes llamar a una variable prácticamente como quieras, pero existen limitaciones:
+Debes limitarte a usar caracteres latinos(0-9, a-z, A-Z) y el caracter de subrayado.
+
+    1. No debes usar otros caracteres porque pueden causar errores.
+    2. No use guiones bajos al comienzo del nombre de las variables.
+    3. No uses números al comienzo de la variable.
+    4. Una convención segura a seguir es la llamada "minúscula mayúscula intercalada".
+    5. Haz que los nombres de las variables sean intuitivos, para que describan los datos que contienen.
+    6. Evita el uso de palabras reservadas de Javascript como nombres de variables - con esto, me refiero a las palabras
+        que componen la sintaxis real de Javascript.
+
+/* Buenos nombres :) */
+edad
+miEdad
+colorInicial
+inicial
+resultadoFinalValor
+audio1
+audio2
+
+/* Malos Nombres :( */
+1
+a
+_12
+miedad
+MIEDAD
+var
+Documento
+orgnboergn
+ojgbeorbepoignepirgnrwegnerojg
+
+
+/* Tipos de variables */
+Hay algunos tipos de datos diferentes que podemos almacenar en variables. En esta sección, los describiremos brevemente, 
+luego, en modulos futuros, aprenderás más detalles.
+
+Hasta ahora hemos analizado los dos primeros, pero hay otros.
+
+Números:
+    let miEdad = 17;
+
+Strings:
+    let diAdios = 'Hasta luego y gracias por todo.';
+
+Booleanos: 
+    (true, false)
+    let estoyVivo = true;
+
+    Mientras que en realidad se usa así:
+    let test = 6 < 3; // false
+
+Arreglos
+    let miNombreArray = ['Sam', 'Ivana', 'Viviana'];
+    let miNumeroArray = [10, 15, 20];
+
+Objetos
+    let perro = { nombre: 'Dante', raza: 'Pitbull' };
+
+/* Tipado dinámico */

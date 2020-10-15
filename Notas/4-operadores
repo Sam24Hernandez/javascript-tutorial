@@ -1,0 +1,96 @@
+/************************* Operadores matemáticos *************************/
+
+Tipos de Números:
+    * Enteros son números sin parte decimal(integer): 10, 400, 0 -5.
+    * Números con coma flotante(floats): 12.5, 56.675567
+    * Doubles
+
+    * Binario - El lenguaje de computadora de nivel más bajo; 0s y 1s.
+    * Octal - De base 8, utiliza de 0-7 en cada columna.
+    * Hexadecimal - De base 16, utiliza de 0-9 y luego de a-f en cada columna.
+
+/* Para mi, todos son números. */
+
+Juguemos un poco con algunos números para ponernos al día con la sintaxis básica que necesitamos. 
+Coloca los comandos listados abajo en la consola JavaScript de tus herramientas para desarrolladores, o 
+utiliza la sencilla consola integrada que verás abajo si lo prefieres.
+
+* Abrir en una nueva ventana
+1. Primero que todo, declara un par de variables e inicializalas con un entero y un flotante, 
+    respectivamente, luego escribe los nombres de esas variables para chequear que todo esté en orden: 
+
+    var myInt = 5;
+    var myFloat = 6.667;
+    myInt;
+    myFloat;
+
+2. Los valores numéricos están escritos sin comillas - Trata de declarar e inicializar un par de variables más que contengan números antes de continuar.
+3. Ahora chequea que nuestras variables originales sean del mismo tipo. Hay un operador llamado typeof en JavaScript hace esto. 
+    Digita las dos lineas siguientes: 
+
+    typeof myInt;
+    typeof myFloat;
+
+Obtendrás "number" en ambos casos — esto hace las cosas mucho más fáciles que si diferentes números tuvieran difetentes tipos, y tuvimos que lidiar con ellos de diferentes maneras. Uf !
+
+/* Precedencia de Operadores */
+Veamos el último ejemplo de javascript, asumiendo que num2 tiene el valor 50 y num1 tiene el valor 10 (como se indicó anteriormente):
+num2 + num1 / 8 + 2;
+
+Como un ser humano, puedes leer esto como "50 más 10 es igual a 60", luego "8 más 2 es igual a 10", y finalmente "60 dividido por 10 es igual a 6".
+
+Pero el navegador hace "10 dividido por 8 es igual a 1.25", luego "50 más 1.25 más 2 es igual a 53.25".
+
+Esto es debido a la precedencia de operadores — algunos operadores son aplicados antes de otros cuando se calcula el resultado de una suma (referida como una expresión, en programación).  
+La precedencia de operadores en JavaScript es la misma que en las matemáticas de la escuela  — La multiplicación y la división se resuelven siempre primero, luego la suma y resta 
+(la suma siempre se evalua de izquierda a derecha).
+
+Si quieres alterar la precedencia de operación, puedes colocar paréntesis alrededor de las partes que quieras explícitamente evaluar primero. Para obtener un resultado de 6, 
+podríamos hacer esto:
+
+(num2 + num1) / (8 + 2);
+
+/* Operadores de incremento y decremento */
+Algunas veces necesitarás repetidamente sumar o restar uno de/a una variable numérica. Esto puede hacerse convenientemente usando los operadores de incremento (++) y decremento (--). 
+Usamos ++ en nuestro juego "Adivina el número".
+
+adivinaCount++;
+
+Prueba esto en la consola de desarrollador:
+var num1 = 4;
+num1++;
+num1;
+Verás como incrementa un numero 4++; es igual a 4 + 1 = 5;
+
+Tambien prueba el decrementador:
+var num2 = 6;
+num2--;
+num2;
+
+Nota: Puedes hacer que el navegador lo haga al revés: aumentar / disminuir la variable y luego devolver el valor, colocando el operador al comienzo de la variable en lugar del final. 
+Prueba los ejemplos anteriores otra vez, pero esta vez usa ++num1 y--num2.
+
+/* Operadores de asignación complejos */
+
+Operador      Nombre            Descripción                     Ejemplo             Atajo de
++=            Adición asigna.   Suma el valor de la derecha     x = 3;              x = 3;
+                                al valor de la variable de la   x += 4;             x = x + 4;
+                                izquierda y retorna el nuevo
+                                valor.
+
+-=            Resta asignacion  Resta el valor de la derecha,   x = 6;              x = 6;
+                                del valor de la variable de la  x -= 3;             x = x - 3;
+                                izquierda y retorna el nuevo 
+                                valor.
+
+
+*=            multiplicación    Multiplica el valor de la       x = 2;              x = 2;
+              asignación        variable en la izquierda        x *= 3;             x = x * 3;
+                                por el valor de la derecha 
+                                y retorna el nuevo valor.
+
+/= 	          División          Divide el valor de la variable  x = 10;             x = 10;
+              asignación 	    en la izquierda por el valor    x /= 5;             x = x / 5;
+                                la derecha y retorna el 
+                                nuevo valor.
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript - Cadenas de texto y métodos</title>
+  </head>
+  <body>
+    <h3>Ejercicio 1(indexOf()):</h3>
+    <div class="output">
+      <ul></ul>
+    </div>
+    <hr />
+
+    <h3>Ejercicio 2:</h3>
+    <div class="outputTwo">
+      <ul></ul>
+    </div>
+    <hr />
+
+    <h3>Ejercicio 3:</h3>
+    <div class="outputThree">
+      <ul></ul>
+    </div>
+
+    <!-- Cadenas -->
+    <script>
+      // este es un objeto como cadena
+      let browserType = "mozilla";
+      // 1. Encontrar la longitud de una cadena
+      console.log(browserType.length);
+
+      /*
+        Las computadoras cuentan desde 0, no desde 1        
+      */
+      // 2. Extraer el ultimo caracter de cualquier cadena:
+      console.log(browserType[browserType.length - 1]);
+
+      /* 3. Encontrar una subcadena dentro de una cadena y extraerla
+      indexOf() que toma un unico parametro - la subcadena que deseas buscar:
+      */
+      //console.log(browserType.indexOf("zilla"));
+      console.log(browserType.indexOf("vanilla"));
+
+      /* 4. Cuando sabes donde comienza una subcadena dentro de una cadena
+        y sabes hasta cual caracter deseas que termine, usa slice() para extraerla:        
+      */
+      // console.log(browserType.slice(0, 3));
+      console.log(browserType.slice(2));
+
+      /*
+        5. Cambiando todo a mayuscula o minuscula:
+        toLowerCase() y toUpperCase()
+      */
+      let radData = "Mi NoMbre Es SaM";
+      // Minuscula toda una cadena
+      console.log(radData.toLowerCase());
+      // Mayuscula toda una cadena
+      console.log(radData.toUpperCase());
+
+      /*
+        6. Actualizando partes de una cadena
+        replace()
+      */
+      console.log(browserType.replace("moz", "van"));
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>

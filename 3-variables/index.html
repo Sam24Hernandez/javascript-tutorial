@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript - Variables</title>
+  </head>
+  <body>
+    <button>Presióname</button>
+
+    <!-- Javascript -->
+    <script type="text/javascript">
+      const button = document.querySelector("button");
+
+      button.onclick = function () {
+        let name = prompt("¿Cuál es tu nombre?");
+        alert("¡Hola " + name + ", encantado de conocerte!");
+      };
+
+      /* Var: Se puede redeclarar una variable */
+      var myName = "Sam";
+      console.log(myName);
+      var myName = "Ivana";
+      console.log(myName);
+
+      /* Let: No se puede redeclara una variable luego de ser inicializada */
+      let myName = "Sam";
+      console.log(myName);
+      myName = "Ivana";
+      console.log(myName);
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>

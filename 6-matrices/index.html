@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript - Matrices</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Factura de Compra:</h2>
+    <div class="output">
+      <ul></ul>
+      <p></p>
+    </div>
+
+    <!--Creando una matriz-->
+    <script>
+      let comprando = ["pan", "leche", "queso", "refresco", "chocolate"];
+
+      console.log(comprando[0]);
+
+      // Modificar un elemento en la matriz
+      comprando[0] = "pollo";
+      console.log(comprando);
+
+      // Más ejemplos de como se crean matrices
+      let secuencia = [1, 1, 2, 3, 5, 8, 12];
+
+      // Encontrar la longitud de una matriz
+      for (var i = 0; i < secuencia.length; i++) {
+        // console.log(secuencia[i]);
+      }
+
+      // Matriz Multidimensional
+      let random = ["tree", 796, [0, 1, 2]];
+
+      // Acceder a uno de los elementos dentro de la matriz:
+      // console.log(random[2][2]);
+
+      /*
+        Conversión entre matrices y cadenas
+        split(): divide un objeto de tipo String en un array(vector) de 
+        cadenas mediante la separación de la cadena en subcadenas
+      */
+
+      // 1. Creamos una cadena de esta forma
+      let myData = "Manchester,London,Liverpool,Leeds,Alemania,Carlisle";
+
+      // 2. Dividirlo en cada coma
+      let myArray = myData.split(",");
+      console.log(myArray);
+
+      // 3. Encuentra la longitud de tu nueva matriz y recupera algunos elems. de ella
+      console.log(myArray.length);
+      console.log(myArray[0]); // el primer item del array
+      console.log(myArray[1]); // el segundo item del array
+      console.log(myArray.length - 1); // el ultimo item del array
+
+      // 4. Ir en dirección opuesta usando join()
+      let myNewString = myArray.join(",");
+      console.log(myNewString);
+
+      // 5. Otra forma de convertir una matriz en cadena es usar toString()
+      let dogNames = ["Rocket", "Rocky", "Mike", "Bella", "Ivana"];
+      console.log(dogNames.toString()); // Rocket,Rocky,Bella,Ivana
+
+      /*
+        Agregar y eliminar elementos de la matriz:
+        push()
+        pop()
+      */
+      let miArreglo = [
+        "Manchester",
+        "London",
+        "Liverpool",
+        "Birmingham",
+        "Leeds",
+        "Carlisle",
+      ];
+      // Agregando nuevos elementos
+      miArreglo.push("Cardiff");
+      console.log(miArreglo);
+      miArreglo.push("Bradford", "Brighton");
+      console.log(miArreglo);
+
+      let newLength = miArreglo.push("Bristol");
+      console.log(miArreglo);
+      console.log(newLength);
+
+      // Eliminando elementos
+      let removedItem = miArreglo.pop();
+      console.log(miArreglo);
+      console.log(removedItem);
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>

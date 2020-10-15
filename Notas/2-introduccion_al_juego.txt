@@ -62,7 +62,7 @@ funciona cada sentencia.
 
 EXTRA: 
 
-OPERADORES
+OPERADORES ARTIMETICOS
 Los operadores de JavaScript nos permiten realizar pruebas, hacer cálculo matemáticos, unir cadenas
 y otras cosas similares.
 
@@ -74,6 +74,7 @@ Operador        Descripción         Ejemplo
 -               Resta               20 - 15
 *               Multiplicación      3 * 7   
 /               División            10 / 5
+%               Módulo              8 % 3
 
 También puedes usar el operador + para concatenar(unir cadenas de texto). Intenta esto:
 let name = 'Sam'; // Pulsa Enter en cada instruccion y ve el resultado
@@ -83,7 +84,7 @@ hello;
 let saludo = '¡' + name + hello;
 saludo;
 
-Operadores de asignación: Cuando ejecutamos pruebas de verdadero/falso(por ejemplo dentro de condicionales), por ejemplo:
+Operadores de comparación: Cuando ejecutamos pruebas de verdadero/falso(por ejemplo dentro de condicionales), por ejemplo:
 
 Operador        Descripción             Ejemplo
 ===             Igualdad estricta       5 === 2 + 4 // false
@@ -94,6 +95,9 @@ Operador        Descripción             Ejemplo
 
 < >             Menor que y Mayor que   6 < 10 // true
                                         6 > 10 // false
+
+<= >=           Menor o igual a         3 <= 2 // false
+                Mayor o igual a         5 >= 4 // true
 
 BUCLES
 Una parte del código anterior que debemos examinar detalladamente es el bucle for. Los bucles son un muy 
