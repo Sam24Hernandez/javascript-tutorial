@@ -1,0 +1,88 @@
+/**************** Bucles ****************/
+
+Los lenguajes de programación son muy útiles para completar rápidamente tareas repetitivas, 
+desde múltimples cálculos básicos hasta cualquier otra situación en donde tengas un montón de elementos 
+de trabajo similares que completar. Aquí vamos a ver las estructuras de bucles disponibles en JavaScript que 
+pueden manejar tales necesidades.
+
+* Mantente en el Bucle *
+
+Bucles, bucles, bucles. Además de ser conocidos como un cereal de desayuno popular, montañas rusas y producción músical, 
+también son un concepto muy importante en programación. Los bucles de programación están relacionados con todo lo referente a 
+hacer una misma cosa una y otra vez — que se denomina como iteración en el idioma de programación.
+
+En pseudocódigo,esto se vería como sigue:
+
+bucle(comida = 0; comidaNecesaria = 10) {
+
+    if (comida = comidaNecesaria) {
+        salida bucle;
+        // Tenemos suficiente comida; vamonos para casa
+    } else {
+        comida += 2 // Pasar una hora recogiendo 2 más de comida
+        // Comenzar el bucle de nuevo
+    }
+}
+
+* Bucle estándar for *
+for (inicializador; condición de salida; expresión final){
+    // código a ejecutar
+}
+
+Aquí tenemos:
+    1. La palabra reservada for, seguida por algunos paréntesis.
+    2. Dentro de los paréntesis tenemos tres ítems, separados por punto y coma (;):
+        1. Un inicializador - Este es usualmente una variable con un número asignado, que aumenta el número de 
+            veces que el bucle ha sijo ejecutado. También se le llama contador o variable de conteo.
+        2. Una condición de salida - como se mencionó previamente, ésta define cuando el bucle debería detenerse. 
+            Generalmente es una expresión que contiene un operador de comparación, una prueba para verificar la condición de 
+            término o salida ha sido cumplida.
+        3. Una expresión final - que es siempre evaluada o ejecutada cada vez que el bucle ha completado una iteración. 
+            Usualmente sirve para modificar al contador (incrementando su valor o algunas veces disminuyendolo), para aproximarse a 
+            la condición de salida.
+    3. Algunos corchetes curvos que contienen un bloque de código - este código se ejecutará cada vez que se repita el bucle.
+
+* Bucle While y Do...While *
+for no es el único tipo de bucle disponible en JavaScript. En realidad hay muchos otros y, aunque no es necesario 
+entender todos ellos ahora, vale la pena echar un vistazo a la estructura de un par de otros para poder reconocer las mismas 
+características en el trabajo de una manera ligeramente diferente.
+
+Primero, echemos un vistazo al bucle while. La sintaxis de este bucle se ve así:
+
+inicializador
+while (exista una condición) {
+    // código a ejecutar
+
+    expresión final
+}
+
+Esto funciona de manera muy similar al bucle for, excepto que la variable inicializadora se establece antes del bucle, y la expresión final 
+se incluye dentro del bucle después del código a ejecutar - en lugar de que estos dos elementos se incluyan dentro de los paréntesis. 
+La condición de salida se incluye dentro de los paréntesis, que están precedidos por la palabra clave while en lugar de for.
+
+Los mismos tres ítems están todavía presentes, y están todavía definidos en el mismo orden que están en el bucle for - esto tiene sentido, 
+ya que todavía tiene que tener un inicializador definido antes de que pueda comprobar si ha alcanzado la condición de salida; 
+la condición final es entonces ejecutada después de que el código dentro del bucle se haya ejecutado (se ha completado una iteración), 
+lo que sólo ocurrirá si la condición de salida todavía no se ha alcanzado.
+
+Echemos un vistazo de nuevo a nuestro ejemplo de la lista de gatos, pero reescrito para usar un bucle while:
+
+* Bucle Do...While *
+El bucle do... while es muy similar, pero proporciona una variación en la estructura del while:
+
+inicializador
+do {
+    // código a ejecutar
+
+    expresión final
+} while (condicion de salida)
+
+En este caso, el inicializador vuelve a ser el primero, antes de que empiece el bucle. La palabra clave "do" precede directamente a las llaves
+que contienen el código a ejecutar y la expresión final.
+
+El diferenciador aquí es que la condición de salida viene después de todo lo demás, envuelta en paréntesis y precedida por una palabra clave while. 
+En un bucle do...while, el código dentro de las llaves siempre se ejecuta una vez antes de que se compruebe si debe ser ejecutado de nuevo 
+(en while y for, la comprobación viene primero, por lo que el código podría no ser ejecutado nunca).
+
+Reescribamos de nuevo nuestro ejemplo del listado de gatos para usar un bucle do...while:
+

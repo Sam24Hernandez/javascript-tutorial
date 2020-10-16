@@ -1,0 +1,35 @@
+Programacion Orientada a Objetos— lo básico
+
+Para empezar, daremos una descripción simple y de alto nivel acerca de lo que es la Programación Orientada a Objetos (POO). 
+Decimos simple, porque la POO puede volverse complicada rápidamente, y darte un tratamiento completo ahora, 
+probablemente podría confundirte más que ayudar. 
+
+La idea básica de la POO es que usamos objetos para modelar cosas del mundo real que queremos representar en nuestros programas, 
+y/o proveemos una simple manera para acceder a la funcionalidad que, de otra manera, sería difícil o imposible de usar.
+
+Los objetos pueden contener información y código relacionados, los cuales representan información acerca de lo que estás tratando de modelar, 
+y la funcionalidad o comportamiento que deseas que tenga.  
+
+Los datos de un Objeto (y frecuentemente, también las funciones) se pueden almacenar ordenadamente (la palabra oficial es encapsular) 
+dentro del paquete de un objeto (al que se puede asignar un nombre específico, llamado a veces espacio de nombres), 
+haciéndolo fácil de estructurar y acceder; los objetos también se usan comúnmente como almacenes de datos que se pueden enviar fácilmente a través de la red.
+
+Definiciones: 
+
+Abstracción —  crear un modelo simple de algo complejo que represente sus aspectos más importantes y que sea fácil de manipular para el propósito de nuestro programa.
+
+El proceso de crear una instancia del objeto desde una clase se llama instanciación.
+
+Constructores e instancias de objetos
+
+Algunas personas sostienen que JavaScript no es un verdadero lenguaje orientado a objetos — por ejemplo, su enunciado class es sólo azúcar sintáctica sobre la herencia prototípica existente 
+y no es una class en el sentido tradicional. 
+
+JavaScript, utiliza funciones especiales llamadas funciones constructoras para definir objetos y sus características. Son útiles porque a menudo te encontrarás con situaciones en las que no sabes cuántos objetos crearás; 
+los constructores proporcionan los medios para crear tantos objetos como necesites de una manera efectiva, adjuntando datos y funciones a ellos según sea necesario.
+
+Cuando se crea una nueva instancia del objeto a partir de una función constructora, su funcionalidad central (tal como se define en su prototipo, que exploraremos en el artículo Prototipos de objetos) 
+no se copia en el nuevo objeto como lenguajes OO "clásicos", sino que la funcionalidad está vinculada a través de una cadena de referencia llamada cadena prototipo. Así que esto no es una verdadera instanciación, 
+estrictamente hablando, JavaScript usa un mecanismo diferente para compartir funcionalidad entre objetos.
+
+EL CONSTRUCTOR Object()

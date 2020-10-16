@@ -1,0 +1,27 @@
+/********************** Conceptos básicos de objeto **********************/
+
+Un objeto es una colección de datos relacionados y/o funcionalidad (que generalmente consta de algunas variables y funciones, que se denominan propiedades y métodos cuando están dentro de objetos). 
+Vamos a trabajar a través de un ejemplo para mostrate cómo son.
+
+Para empezar, haz una copia local de un archivo llamado objects.html. 
+Esto contiene muy poco: un elemento <script> para que escribas tu código fuente en él. Lo usaremos como base para explorar la sintaxis básica de los objetos.
+
+Al igual que con muchas cosas en JavaScript, la creación de un objeto a menudo comienza con la definición e iniciación de una variable. 
+
+Sintaxis de un objeto sigue siempre este patron:
+
+var nombreObjeto = {
+    miembro1Nombre: miembro1Valor,
+    miembro2Nombre: miembro2Valor,
+    miembro3Nombre: miembro3Valor,
+    miembro4Nombre: miembro4Valor,
+    miembro5Nombre: miembro5Valor,
+}
+
+* Establecer miembros de objetos *
+
+var nombrePerzonalizado = entradaNombre.value;
+var valorPerzonalizado = entradaValor.value;
+
+Obtenemos: 
+persona[nombrePerzonalizado] = valorPerzonalizado;

@@ -1,12 +1,12 @@
 "use strict";
 
 // Declarando mi primera variable
-var titulo = document.querySelector('h1');
-titulo.addEventListener('click', actualizaNombre);
+var titulo = document.querySelector("h1");
+titulo.addEventListener("click", actualizaNombre);
 
 function actualizaNombre() {
-  var nombre = prompt('Ingresa un nuevo nombre');
-  titulo.textContent = 'Jugador 1: ' + nombre;
+  var nombre = prompt("Ingresa un nuevo nombre");
+  titulo.textContent = "Jugador 1: " + nombre;
 }
 /* 
     Reemplazar con esta funcion en el documento HTML,
@@ -15,16 +15,27 @@ function actualizaNombre() {
 */
 
 
-var buttons = document.querySelectorAll('button');
+var buttons = document.querySelectorAll("button");
 
 for (var i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener('click', crearParrafo);
+  buttons[i].addEventListener("click", crearParrafo);
 }
 /* Mala practica */
 
 
 function crearParrafo() {
-  var para = document.createElement('p');
-  para.textContent = '¡Haz hecho click en el botón!';
+  var para = document.createElement("p");
+  para.textContent = "¡Haz hecho click en el botón!";
   document.body.appendChild(para);
 }
+/* Sintáxis Básica */
+// 1. Javascript no tiene en cuenta los espacios en blanco y las nuevas lineas:
+
+
+var palabra = "Hola";
+var saludo = "Hola Mundo"; // comentario de una sola linea
+
+/*
+ * Este es un comentario
+ * de multiple linea
+ */

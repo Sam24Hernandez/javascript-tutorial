@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript - DOM</title>
+  </head>
+  <body>
+    <script>
+      // ejecuta esta funcion cuando se cargue el documento
+      window.onload = function () {
+        // crear dinámicamente un par de elmentos HTML en una página vacia
+        var heading = document.createElement("h1");
+        var heading_text = document.createTextNode("el texto que quieras");
+
+        heading.appendChild(heading_text);
+        document.body.appendChild(heading);
+      };
+    </script>
+  </body>
+</html>

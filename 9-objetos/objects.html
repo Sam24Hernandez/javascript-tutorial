@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript - Objetos</title>
+  </head>
+  <body>
+    <script>
+      // Crear un objeto literal (Arreglos asociativos)
+
+      // Notación de punto: para acceder a las propiedades escribe en consola:
+      // persona.edad | persona.nombre.pila
+
+      // Notación de corchetes: otra manera de acceder a las propiedades es asi:
+      // persona['edad'] | persona['nombre']['pila']
+      var persona = {
+        // Propiedades
+        nombre: {
+          pila: ["Sam", "Ivana", "Miguel"],
+          apellido: ["Hernandez", "Alarcon", "Hilario"],
+        },
+        edad: 19,
+        genero: ["masculino", "femenino"],
+        intereses: ["música", "deporte", "física", "programación"],
+        // Métodos del objeto
+        bio: function () {
+          /*alert(
+            this.nombre[0] +
+              ", " +
+              this.nombre[1] +
+              ", " +
+              this.nombre[2] +
+              " tienen " +
+              this.edad +
+              " años."
+          );*/
+          alert(
+            this.nombre.pila[0] +
+              ", " +
+              this.nombre.pila[1] +
+              " y " +
+              this.nombre.pila[2] +
+              " tienen " +
+              this.edad +
+              " años."
+          );
+        },
+        saludo: function () {
+          /*
+           *   La palabra clave this se refiere al objeto actual en el que
+           *   se esta escribiendo el codigo.
+           *    this es muy util para construir constructoress
+           */
+          alert("Hola, Soy " + this.nombre[0] + ".");
+        },
+      };
+
+      // Ejmplo de this
+      var persona1 = {
+        nombre: "Sam",
+        saludo: function () {
+          alert("¡Hola!, Soy " + this.nombre + ".");
+        },
+      };
+
+      var persona2 = {
+        nombre: "Ivana",
+        saludo: function () {
+          alert("¡Hola!, Soy " + this.nombre + ".");
+        },
+      };
+    </script>
+  </body>
+</html>
