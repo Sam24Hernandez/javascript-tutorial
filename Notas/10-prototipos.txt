@@ -1,0 +1,38 @@
+PROTOTIPOS DE OBJETOS
+
+Son un mecanismo mediante el cual los objetos en Javascript heredan caracteristicas entre si.
+
+* ¿Un lenguaje basado en prototipos? *
+
+JavaScript es a menudo descrito como un lenguaje basado en prototipos - para proporcionar mecanismos de herencia, 
+los objetos pueden tener un objeto prototipo, el cual actúa como un objeto plantilla que hereda métodos y propiedades.
+
+Un objeto prototipo del objeto puede tener a su vez otro objeto prototipo, el cual hereda métodos y propiedades, y así sucesivamente. 
+Esto es conocido con frecuencia como la cadena de prototipos, y explica por qué objetos diferentes pueden tener disponibles propiedades 
+y métodos definidos en otros objetos.
+
+Bien, para ser exactos, los métodos y propiedades son definidos en la propiedad prototype, que reside en la función constructora del objeto, 
+no en la instancia misma del objeto.
+
+En JavaScript, se establece un enlace entre la instancia del objeto y su prototipo 
+(su propiedad __proto__, la cual es derivada de la propiedad prototype sobre el constructor), 
+y las propiedades y metodos son encontrados recorriendo la cadena de prototipos.
+
+Nota: Es importante entender que, tanto el prototipo de la instancia de un objeto (al cual se accede mediante Object.getPrototypeOf(obj), 
+o a través de la propiedad __proto__) como el prototipo que contiene el constructor 
+(que se encuentra en la propiedad prototype del constructor) hacen referencia al mismo objeto.
+
+Vamos a echar un vistazo a algunos ejemplos para intentar aclarar estos conceptos.
+
+La propiedad prototype: Donde se definen los miembros hereditarios
+
+Entonces, ¿dónde se definen las propiedades y métodos heredados? Si miras la página de referencia del objeto, verás en la parte izquierda un gran número de propiedades y métodos - 
+muchos más que el número de miembros heredados que vimos disponibles en el objeto person1. Algunos son hereditarios y otros no, ¿por qué?
+
+La respuesta es que los heredados son los que están definidos en la propiedad prototipo (podría llamarse subespacio de nombres), 
+es decir, los que empiezan con Object.prototype, y no los que empiezan sólo con Object. El valor de la propiedad del prototipo es un objeto, 
+que es básicamente un repositorio(bucket) para almacenar propiedades y métodos que queremos que sean heredados por los 
+objetos más abajo en la cadena del prototipo.
+
+Así que Object.prototype.watch(), Object.prototype.valueOf(), etc., están disponibles para cualquier tipo de objeto que herede de Object.prototype, 
+incluyendo nuevas instancias de objeto creadas desde el constructor.

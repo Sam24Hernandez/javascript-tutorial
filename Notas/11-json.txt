@@ -1,0 +1,82 @@
+¿Qué es realmente JSON?
+
+JSON es un formato de datos basado en texto que sigue la sintaxis de objeto de JavaScript, 
+popularizado por Douglas Crockford. Aunque es muy parecido a la sintaxis de objeto literal de JavaScript, 
+puede ser utilizado independientemente de JavaScript, y muchos entornos de programación poseen la capacidad de leer 
+(convertir; parsear) y generar JSON.
+
+Los JSON son cadenas - útiles cuando se quiere transmitir datos a través de una red. 
+Debe ser convertido a un objeto nativo de JavaScript cuando se requiera acceder a sus datos.
+Ésto no es un problema, dado que JavaScript posee un objeto global JSON que tiene los métodos 
+disponibles para convertir entre ellos.
+
+Un objeto JSON puede ser almacenado en su propio archivo, que es básicamente sólo un archivo de texto con una extension 
+.json, y una MIME type de application/json.
+
+* Estructura del JSON *
+Como se describió previamente, un JSON es una cadena cuyo formato recuerda al de los objetos literales JavaScript. 
+Es posible incluir los mismos tipos de datos básicos dentro de un JSON que en un objeto estándar de JavaScript 
+- cadenas, números, arreglos, booleanos, y otros literales de objeto. Esto permite construir una jerarquía de datos, como ésta:
+
+{
+  "squadName": "Super hero squad",
+  "homeTown": "Metro City",
+  "formed": 2016,
+  "secretBase": "Super tower",
+  "active": true,
+  "members": [
+    {
+      "name": "Molecule Man",
+      "age": 29,
+      "secretIdentity": "Dan Jukes",
+      "powers": [
+        "Radiation resistance",
+        "Turning tiny",
+        "Radiation blast"
+      ]
+    },
+    {
+      "name": "Madame Uppercut",
+      "age": 39,
+      "secretIdentity": "Jane Wilson",
+      "powers": [
+        "Million tonne punch",
+        "Damage resistance",
+        "Superhuman reflexes"
+      ]
+    },
+    {
+      "name": "Eternal Flame",
+      "age": 1000000,
+      "secretIdentity": "Unknown",
+      "powers": [
+        "Immortality",
+        "Heat Immunity",
+        "Inferno",
+        "Teleportation",
+        "Interdimensional travel"
+      ]
+    }
+  ]
+}
+
+
+* JSON es sólo un formato de datos — contiene sólo propiedades, no métodos.
+* JSON requiere usar comillas dobles para las cadenas y los nombres de propiedades. 
+    Las comillas simples no son válidas.
+* Una coma o dos puntos mal ubicados pueden producir que un archivo JSON no funcione. 
+    Se debe ser cuidadoso para validar cualquier dato que se quiera utilizar (aunque los JSON generados 
+    por computador tienen menos probabilidades de tener errores, mientras el programa generador trabaje adecuadamente). 
+    Es posible validar JSON utilizando una aplicación como JSONLint.
+* JSON puede tomar la forma de cualquier tipo de datos que sea válido para ser incluido en un JSON, no sólo arreglos u objetos. 
+    Así, por ejemplo, una cadena o un número único podrían ser objetos JSON válidos.
+* A diferencia del código JavaScript en que las propiedades del objeto pueden no estar entre comillas, en JSON, 
+    sólo las cadenas entre comillas pueden ser utilizadas como propiedades.
+
+* ¿Como obtener el JSON? *
+
+Para obtener el JSON se utilizará un API llamado XMLHttpRequest (a menudo llamado XHR).
+Éste en un objeto JavaScript muy útil que permite realizar solicitudes de red para recuperar 
+recursos desde un servidor vía JavaScript (por ejemplo: imágenes, texto, JSON, incluso código HTML), 
+con lo que es posible actualizar pequeñas secciones de contenido sin tener que volver a cargar la página entera. 
+Con ello se obtienen páginas web más interactivas, pero está fuera del alcance de este modulo entrar en detalle.
