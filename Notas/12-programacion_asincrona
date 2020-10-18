@@ -1,0 +1,170 @@
+/****************************** Conceptos generales de programación asíncrona ******************************/
+
+Normalmente, el código de un programa determinado se ejecuta directamente, y solo sucede una cosa a la vez. 
+Si una función se basa en el resultado de otra función, tiene que esperar a que la otra función termine y regrese, 
+y hasta que eso suceda, todo el programa se detiene esencialmente desde la perspectiva del usuario.
+
+Los usuarios de Mac, por ejemplo, a veces experimentan esto como el cursor giratorio de color arco iris 
+(o "beachball" como se le llama a menudo). 
+Este cursor es la forma en que el sistema operativo dice "el programa actual que estás usando, que ha tenido que 
+detenerse y esperar a que algo termine, y está tardando tanto que te preguntaras qué esta pasando".
+
+Esta es una experiencia frustrante y no es un buen uso de la potencia de procesamiento de las computadoras, 
+especialmente en una era en la que las computadoras tienen múltiples núcleos de procesador disponibles. 
+No tiene sentido sentarse a esperar algo cuando puedes dejar que la otra tarea se desplace a otro núcleo de procesador 
+y te avise cuando haya terminado. 
+
+Esto te permite hacer otro trabajo mientras tanto, que es la base de la programación asíncrona. 
+Depende del entorno de programación que estés usando (los navegadores web, en el caso del desarrollo web) 
+proporcionan las API que te permitan ejecutar tales tareas de forma asíncrona.
+
+* Código de Bloqueo *
+
+Las técnicas asincrónicas son muy útiles, particularmente en la programación web. Cuando una aplicación web se 
+ejecuta en un navegador y éste ejecuta un trozo de código intensivo sin devolverle el control al navegador, éste puede parecer congelado. 
+Esto se denomina bloqueo; se bloquea el navegador para que no pueda seguir manejando las entradas del usuario y realizar otras tareas 
+hasta que la aplicación web devuelva el control del procesador.
+
+Veamos un par de ejemplos que muestran lo que queremos decir con bloqueo.
+
+En nuestro ejemplo de simple-sync.html, agregamos un escuchador de eventos de clic a un botón para que cuando haga clic, 
+ejecute una operación que consume mucho tiempo (calcula 10 millones de fechas y luego registra la última en la consola) y luego agrega un párrafo al DOM:
+
+Al ejecutar el ejemplo, abra su consola de JavaScript y luego haga clic en el botón - notará que el párrafo no aparece hasta después de que las fechas 
+hayan terminado de ser calculadas y el mensaje de la consola haya sido registrado. El código se ejecuta en el orden en que aparece en la fuente, y la operación 
+posterior no se ejecuta hasta que la operación anterior haya terminado de ejecutarse.
+
+En nuestro segundo ejemplo, simple-sync-ui-blocking.html, simulamos algo un poco más realista que se podría encontrar en una página real. 
+Bloqueamos la interactividad del usuario con la representación de la interfaz de usuario. En este ejemplo, tenemos dos botones:
+
+    1. Un botón "Rellenar canvas" que cuando se hace clic llena el <canvas> disponible con 1 millón de círculos azules.
+    2. Un botón "Hazme clic para la alerta" que cuando se hace clic muestra un mensaje de alerta.
+
+* Threads (Hilos) *
+
+Un hilo es básicamente un proceso único que en un programa puede usar para completar tareas.
+Cada hilo sólo puede hacer una única tarea a la vez.
+
+Tarea A --> Tarea B --> Tarea C
+
+Cada tarea se ejcutará de forma secuencial; una tarea tiene que completarse antes de que se pueda iniciar la siguiente.
+
+Como dijimos antes, muchos ordenadores ahora tienen múltiples núcleos, así que pueden hacer varias cosas a la vez. 
+Los lenguajes de programación que pueden soportar múltiples hilos pueden usar múltiples núcleos para completar múltiples 
+tareas simultáneamente:
+
+Hilo 1: Tarea A --> Tarea B
+Hilo2: Tarea C --> Tarea B
+
+/* Javascript es de un solo hilo */
+
+Javascript de un solo hilo. Incluso con múltiples núcleos, sólo se podía conseguir que ejecutara tareas en un único hilo, llamado hilo principal. 
+Nuestro ejemplo de canvas es ejecutado así: 
+
+Hilo principal: Renderizar los circulos en el canvas --> Mostrar alerta()
+
+Después de algún tiempo, JavaScript obtuvo algunas herramientas para ayudar con tales problemas. Los trabajadores de la web permiten enviar parte del 
+procesamiento de JavaScript a un hilo separado, llamado worker(trabajador), para que puedas ejecutar varios trozos de JavaScript simultáneamente. 
+Por lo general, se utiliza un worker para ejecutar procesos costosos en el hilo principal para que la interacción con el usuario no se bloquee.
+
+Hilo principal: Tarea A --> Tarea C
+Hilo worker: Tarea Costosa B
+
+Con esto en mente, echa un vistazo a simple-sync-worker.html, de nuevo con la consola de JavaScript de tu navegador abierta. Esto es una reescritura de nuestro 
+ejemplo anterior que calcula los 10 millones de fechas en un hilo de trabajo separado. Ahora, al hacer clic en el botón, el navegador puede mostrar el párrafo antes 
+de que las fechas hayan terminado de calcularse. La primera operación ya no bloquea la segunda.
+
+/****************************** Javascript asíncrono cooperativo: Tiempos de espera e intervalos ******************************/
+
+Introducción:
+Durante mucho tiempo, la plataforma web ha ofrecido a los programadores de JavaScript una serie de funciones que les permiten ejecutar asincrónicamente el código 
+después de que haya transcurrido un cierto intervalo de tiempo, y ejecutar repetidamente un bloque de código de forma asincrónica hasta que le digas que se detenga.
+
+Estas funciones son:
+* setTimeout()
+    Ejecuta un bloque de código especificado una vez después de que haya transcurrido
+    un tiempo determinado.
+
+* setInterval()
+      Ejecuta un bloque de código especificado repetidamente con un tiempo fijo de demora entre cada llamada.
+
+* requestAnimationFrame()
+    La versión moderna de setInterval(). Ejecuta un bloque de código especificado antes de que el navegador vuelva a pintar la pantalla, 
+    permitiendo que una animación se ejecute a una velocidad de fotogramas adecuada, independientemente del entorno en el que se esté ejecutando.
+
+El código asíncrono configurado por estas funciones se ejecuta en el hilo principal (después de que haya transcurrido el tiempo especificado).
+
+Es importante saber que puedes (y a menudo lo harás) ejecutar otro código antes de que se ejecute una llamada a setTimeout(), o entre iteraciones de setInterval(). 
+Dependiendo de lo intensivas que sean estas operaciones, pueden retrasar aún más su código async, ya que cualquier código async se ejecutará sólo después de que el 
+hilo principal esté disponible. (En otras palabras, cuando la pila está vacía.) Aprenderás más sobre este asunto a medida que avances en este módulo.
+
+En cualquier caso, estas funciones se utilizan para ejecutar animaciones constantes y otros procesos de fondo en un sitio web o aplicación. 
+En las siguientes secciones te mostraremos cómo se pueden utilizar.
+
+/* setTimeout() */
+
+    * Una función para ejecutar, o una referencia a una función definida en otro lugar.
+    * Un número que representa el intervalo de tiempo en milisegundos (1000 milisegundos es igual a 1 segundo) 
+        para esperar antes de ejecutar el código. Si se especifica un valor de 0 (o simplemente se omite el valor), la función se ejecutará lo antes posible.         
+    * Cero o más valores que representen cualquier parámetro que desee pasar a la función cuando se ejecute.
+
+/* setInterval() */
+
+Funciona perfectamente cuando necesitas ejecutar el código una vez después de un período de tiempo determinado. 
+¿Pero qué pasa cuando necesitas ejecutar el código una y otra vez, por ejemplo, en el caso de una animación?
+funciona perfectamente cuando necesitas ejecutar el código una vez después de un período de tiempo determinado. 
+
+Aquí es donde setInterval() entra en juego. Funciona de forma muy similar a setTimeout(), excepto que la función que pasas como primer parámetro se ejecuta repetidamente 
+a no menos del número de milisegundos que da el segundo parámetro aparte, en lugar de una vez. También puede pasar cualquier parámetro requerido por la función que se está 
+ejecutando como parámetros subsiguientes de la llamada setInterval().
+
+/* requestAnimationFrame() */
+
+Es una función especializada de bucle creada para ejecutar animaciones de forma eficiente en el navegador. Es básicamente la versión moderna de setInterval() - 
+ejecuta un bloque de código especificado antes de que el navegador vuelva a pintar la pantalla, permitiendo que una animación se ejecute a una velocidad de fotogramas adecuada, 
+independientemente del entorno en el que se esté ejecutando.
+
+Fue creada en respuesta a problemas percibidos con setInterval(), que por ejemplo no se ejecuta a una velocidad de fotogramas optimizada para el dispositivo, a veces deja caer los 
+fotogramas, continúa ejecutándose incluso si la pestaña no es la activa o la animación se desplaza fuera de la página, etc.
+
+* ¿A qué velocidad corre tu animación? *
+
+La suavidad de tu animación depende directamente de la velocidad de fotogramas de tu animación y se mide en fotogramas por segundo (fps). Cuanto más alto sea este número, 
+más suave se verá tu animación, hasta cierto punto.
+
+Dado que la mayoría de las pantallas tienen una frecuencia de actualización de 60 Hz, la velocidad de fotogramas más rápida a la que puedes aspirar es de 60 fotogramas por segundo 
+(FPS) cuando trabajas con navegadores web. Sin embargo, más cuadros significa más procesamiento, lo que a menudo puede causar tartamudeo y saltos, también conocidos como cuadros de caída, o jank.
+
+Si tienes un monitor con una frecuencia de actualización de 60 Hz y quieres alcanzar los 60 FPS tienes unos 16,7 milisegundos (1000 / 60) para ejecutar tu código de animación para renderizar cada fotograma. 
+Esto es un recordatorio de que tendrás que tener en cuenta la cantidad de código que intentas ejecutar durante cada pasada por el bucle de animación.
+
+requestAnimationFrame() siempre trata de acercarse lo más posible a este mágico valor de 60 FPS. A veces, no es posible: si tienes una animación realmente compleja y la ejecutas en un ordenador lento, 
+tu velocidad de fotogramas será menor. En todos los casos, requestAnimationFrame() siempre hará lo mejor que pueda con lo que tiene disponible.
+
+/****************************** Programación asincrona con Promesas ******************************/
+
+Las promesas son una característica comparativamente nueva del lenguaje JavaScript que permite aplazar las acciones posteriores hasta después de que se haya completado una acción anterior, o 
+responder a su fracaso. Esto es útil para configurar una secuencia de operaciones de sincronización para que funcione correctamente. Este artículo te muestra cómo funcionan las promesas, cómo las verás en uso con las API web 
+y cómo escribir las tuyas propias.
+
+/* ¿Qué son las promesas? */
+
+Esencialmente, una Promesa es un objeto que representa un estado intermedio de una operación - en efecto, una promesa de que un resultado de algún tipo será devuelto en algún momento en el futuro. 
+No hay garantía de cuándo exactamente se completará la operación y se devolverá el resultado, pero sí hay garantía de que cuando el resultado esté disponible, o la promesa falle, el código que 
+proporcione se ejecutará para hacer otra cosa con un resultado satisfactorio, o para manejar con gracia un caso de fracaso.
+
+Generalmente, usted está menos interesado en la cantidad de tiempo que una operación de sincronización tomará para devolver su resultado (a menos, por supuesto, que tome demasiado tiempo!), 
+y más interesado en poder responder a que sea devuelto, cuando sea. Y por supuesto, es bueno que no bloquee el resto de la ejecución del código.
+
+Uno de los compromisos más comunes que tendrás con las promesas es con las APIs web que devuelven una promesa. Consideremos una hipotética aplicación de video chat. 
+La aplicación tiene una ventana con una lista de los amigos del usuario, y al hacer clic en un botón junto a un usuario se inicia una videollamada a ese usuario.
+
+El manejador de ese botón llama a getUserMedia() para obtener acceso a la cámara y el micrófono del usuario. Dado que getUserMedia() tiene que asegurarse de que el usuario tiene permiso para utilizar esos dispositivos y 
+preguntarle qué micrófono y qué cámara debe utilizar (o si debe ser una llamada de voz, entre otras posibles opciones), puede bloquear hasta que no sólo se tomen todas esas decisiones, sino que también se hayan activado 
+la cámara y el micrófono. Además, el usuario puede no responder inmediatamente a estas solicitudes de permiso. Esto puede llevar potencialmente mucho tiempo.
+
+Dado que la llamada a getUserMedia() se hace desde el hilo principal del navegador, todo el navegador se bloquea hasta que getUserMedia() regrese! Obviamente, esa no es una opción aceptable; sin promesas, 
+todo en el navegador se vuelve inutilizable hasta que el usuario decida qué hacer con la cámara y el micrófono. Así que en lugar de esperar al usuario, habilitar los dispositivos elegidos, y 
+devolver directamente el MediaStream para el stream creado a partir de las fuentes seleccionadas, getUserMedia() devuelve una promesa que se resuelve con el MediaStream una vez que está disponible.
+
+El código que la aplicación de video chat usaría podría verse algo como en la carpeta de promesas:

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript - Promesas</title>
+  </head>
+  <body>
+    <script>
+      function handleCallButton(evt) {
+        setStatusMessage("Conectando...");
+        navigator.mediaDevices
+          .getUserMedia({
+            video: true,
+            audio: true,
+          })
+          .then((chatStream) => {
+            selfViewElem.srcObject = chatStream;
+            chatStream
+              .getTracks()
+              .forEach((track) => myPeerConnection.addTrack(track, chatStream));
+            setStatusMessage("Conectado");
+          })
+          .catch((err) => {
+            setStatusMessage("Falló al intentar conectarse");
+          });
+      }
+    </script>
+  </body>
+</html>

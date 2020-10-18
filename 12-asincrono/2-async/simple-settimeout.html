@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript - SetTimeout</title>
+  </head>
+  <body>
+    <script>
+      // Con una función nombrada
+      let miSaludo = setTimeout(function () {
+        alert("Hola, Sr. Universo!");
+      }, 2000);
+
+      // Con una función definida por separado
+      function diHola() {
+        alert("Hola, Sr. Universo!");
+      }
+
+      let miSaludo = setTimeout(diHola, 2000);
+    </script>
+  </body>
+</html>

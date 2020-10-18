@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript - requestAnimationFrame</title>
+    <style>
+      html {
+        background-color: white;
+        height: 100%;
+      }
+
+      body {
+        height: inherit;
+        background-color: red;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      div {
+        display: inline-block;
+        font-size: 10rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div>↻</div>
+
+    <script>
+      // Almacena la referencia al elemento div, crea un contador de rotación y anula el startTime
+      // y crear una variable no inicializada para almacenar la llamada de requestAnimationFrame() en
+      const spinner = document.querySelector("div");
+      let rotateCount = 0;
+      let startTime = null;
+      let rAF;
+
+      // Crear una funcón draw()
+      function draw(timestamp) {
+        if (!startTime) {
+          startTime = timestamp;
+        }
+
+        rotateCount = (timestamp - startTime) / 3;
+
+        // Si la cuenta de rotación supera los 359, ponla en "resto de la división por 360".
+        if (rotateCount > 359) {
+          rotateCount %= 360;
+        }
+
+        // Establecer la rotación del buceador para que sea igual a la de los grados de la cuenta de rotación
+        spinner.style.transform = "rotate(" + rotateCount + "deg)";
+
+        // Llama al siguiente cuadro de la animación
+        rAF = requestAnimationFrame(draw);
+      }
+      draw();
+    </script>
+  </body>
+</html>
