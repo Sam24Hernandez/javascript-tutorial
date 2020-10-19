@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #ccc;
+}
+
+.toolbar {
+  margin: 0 auto;
+  width: 150px;
+  height: 85px;
+  background-color: #ccc;
+  padding: 10px;
+}
+
+input[type="color"],
+button {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+}
+
+input[type="range"] {
+  width: 70%;
+}
+
+span {
+  position: relative;
+  bottom: 10px;
+  font-weight: bold;
+}

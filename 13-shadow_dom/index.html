@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shadow DOM</title>
+  </head>
+  <body>
+    <section>
+      <img src="img/firefox-icon.png" alt="Logo Mozilla Firefox" />
+    </section>
+
+    <div class="shadow-host"></div>
+
+    <script>
+      const myElement = document.querySelector(".shadow-host");
+      // Se podrá acceder al Shadow Root desde fuera
+      const shadow = myElement.attachShadow({ mode: "open" });
+
+      // No se podrá acceder al Shadow Root desde fuera
+      // const shadow = myElement.attachShadow({ mode: "closed" });
+      const quoteEl = document.createElement("blockquote");
+      quoteEl.innerText = "Haz el amor y no la guerra (John Lennon)";
+      shadow.appendChild(quoteEl);
+
+      const styles = document.createElement("style");
+      styles.textContent = `
+      blockquote {
+            color: white;
+            background: #000;
+            padding: 20px;
+            display: block;
+            font-family: sans-serif;
+            font-size: 2rem;
+        }
+      `;
+      shadow.appendChild(styles);
+    </script>
+  </body>
+</html>
