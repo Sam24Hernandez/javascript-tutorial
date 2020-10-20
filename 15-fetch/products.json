@@ -1,0 +1,74 @@
+[
+    {
+      "name" : "frijoles cocidos",
+      "price" : 0.40,
+      "image" : "beans.jpg",
+      "type" : "vegetales"
+    },
+    {
+      "name" : "hot dogs",
+      "price" : 1.99,
+      "image" : "hotdogs.jpg",
+      "type" : "carne"
+    },
+    {
+      "name" : "spam",
+      "price" : 2.85,
+      "image" : "spam.jpg",
+      "type" : "carne"
+    },
+    {
+      "name" : "frijoles refritos",
+      "price" : 0.99,
+      "image" : "refried.jpg",
+      "type" : "vegetales"
+    },
+    {
+      "name" : "frijoles rojos",
+      "price" : 0.58,
+      "image" : "kidney.jpg",
+      "type" : "vegetales"
+    },
+    {
+      "name" : "guisantes de jardín",
+      "price" : 0.52,
+      "image" : "gardenpeas.jpg",
+      "type" : "vegetales"
+    },
+    {
+      "name" : "guisantes blandos",
+      "price" : 0.58,
+      "image" : "mushypeas.jpg",
+      "type" : "vegetales"
+    },
+    {
+      "name" : "carne enlatada",
+      "price" : 2.39,
+      "image" : "cornedbeef.jpg",
+      "type" : "carne"
+    },
+    {
+      "name" : "sopa de tomate",
+      "price" : 1.40,
+      "image" : "tomatosoup.jpg",
+      "type" : "sopa"
+    },
+    {
+      "name" : "tomates picados",
+      "price" : 0.45,
+      "image" : "tomato.jpg",
+      "type" : "vegetales"
+    },
+    {
+      "name" : "sopa de fideos de pollo",
+      "price" : 1.89,
+      "image" : "chickennoodle.jpg",
+      "type" : "sopa"
+    },
+    {
+      "name" : "sopa de zanahoria y cilantro",
+      "price" : 1.49,
+      "image" : "carrotcoriander.jpg",
+      "type" : "sopa"
+    }
+  ]
