@@ -1,0 +1,36 @@
+AJAX
+
+Javascript Asíncrono + XML (AJAX) no es una tecnología por sí misma, es un término que describe
+un nuevo modo de utilizar conjuntamente varias tecnologías existentes. Esto incluye:
+HTML, CSS, Javascript, DOM, XML, XSLT y XMLHttpRequest.
+Cuando estas tecnologías se combinan en un modelo AJAX, es posible lograr aplicaciones web capaces
+de actualizarse continuamente sin tener que volver a cargar la página completa.
+Creando así aplicaciones más rápidas y con mejor respuestas a las acciones del usuario.
+
+AJAX tienes dos capacidades:
+* La posibilidad de hacer peticiones al servidor sin tener que volver a cargar la página.
+* La posibilidad de analizar y trabajar con documentos XML-
+
+* Primer Paso - Cómo realizar una petición HTTP al servidor *
+
+Para realizar una petición HTTP usando JavaScript, es necesario crear una instancia de una clase que provea 
+esta funcionalidad. Esta clase fue inicialmente introducida en Internet Explorer como un objeto ActiveX, 
+llamado XMLHTTP. Después Mozilla, Safari y otros navegadores lo siguieron, implementando una clase XMLHttpRequest 
+que soportaba los métodos y las propiedades del objeto ActiveX original.
+
+Como resultado, para crear una instancia de la clase requerida que funcione en todos los navegadores, 
+es necesario poner:
+
+if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+    http_request = new XMLHttpRequest();
+} else if (window.ActiveXObject) { // IE
+    http_request = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+Lo que pasa en el ejemplo dentro de la carpeta 16-ajax/index.html:
+
+    * El usuario presiona el vínculo "Hacer una petición" en el navegador;
+    * Esto llama la función makeRequest() que tiene como parámetro test.html que es un archivo HTML 
+        localizado en el mismo directorio;
+    * La petición es realizada y después (onreadystatechange) la ejecución pasa a alertContents();
+    * alertContents() verifica si la respuesta fue recibida y si es OK, si es así utiliza alert() con el contenido de test.html.
